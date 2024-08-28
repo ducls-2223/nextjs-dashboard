@@ -7,16 +7,9 @@ import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
 import { fetchInvoicesPages } from "@/app/lib/data";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
-}) {
-  const query = searchParams?.query || "";
-  const currentPage = Number(searchParams?.page) || 1;
+export default async function Page(props: any) {
+  const query = props.searchParams?.query || "";
+  const currentPage = Number(props.searchParams?.page) || 1;
 
   const totalPages = await fetchInvoicesPages(query);
 
